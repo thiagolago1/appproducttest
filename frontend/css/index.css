@@ -1,6 +1,6 @@
 * {
-  margin: 0;
-  padding: 0;
+/*   margin: 0;
+  padding: 0; */
   box-sizing: border-box;
   outline: 0;
 }
@@ -20,10 +20,6 @@ h1, h2, h3, h4, h5, h6, strong, button {
   cursor: pointer;
 }
 
-td {
-  padding-left: 20px;
-}
-
 .container-table{
   padding-top: 20px;
   padding-bottom: 50px;
@@ -32,6 +28,7 @@ td {
 }
 
 .container-form{
+  padding-top: 50px;
   padding-left: 30px;
   padding-right: 20px;
 }
