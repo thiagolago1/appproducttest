@@ -1,7 +1,8 @@
 // import Head from 'next/head'
 import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router'
 import { fetchposts } from '../../store/actions/postActions';
-import React, {useEffect, useState, ChangeEvent, FormEvent } from 'react';
+import React, {useEffect } from 'react';
 import { MdAdd, MdEdit, MdDelete } from 'react-icons/md';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -11,12 +12,11 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-// import api from '../services/api';
 
 export default function Products() {
+
+const router = useRouter();
 
 const dispatch = useDispatch();
 const { posts } = useSelector(state => state.post);
@@ -36,38 +36,31 @@ useEffect(() => {
   dispatch(fetchposts());
 },[])
 
-const [formData, setFormData] = useState({
-  name: '',
-  price: 0,
-})
-
-function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
-  const { name, value } = event.target;
-
-  setFormData({name, value});
+function handleSignOut() {
+  router.push('/');
 }
 
-async function handleSubmit(event: FormEvent) {
-  event.preventDefault();
-
-/*   const { name, price } = formData;
-
-  const data = new FormData(); */
-
-  console.log(formData);
-
-  // await api.post('/product', formData);
-
-  alert('new product successfully registered!');
+function handleAddNewProduct() {
+  router.push('/products/addNewProduct');
 }
 
   return (
    <>
 
     <div className="table-container-m">
-    <Typography variant="h3" component="h2" gutterBottom>
-       Products List
-      </Typography>
+      <div className="header-content">
+        <Typography variant="h3" component="h2" gutterBottom>
+        Products List
+        </Typography>
+
+        <Typography variant="h6" component="h6" gutterBottom onClick={handleAddNewProduct}>
+        Add New Product <MdAdd />
+        </Typography>
+
+        <Typography variant="h6" component="h6" gutterBottom onClick={handleSignOut}>
+        Sign Out
+        </Typography>
+      </div>
 
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="simple table">
@@ -82,7 +75,7 @@ async function handleSubmit(event: FormEvent) {
             <TableBody>
               {posts.map((row) => (
                 <TableRow key={row._id}>
-                  <TableCell component="th" scope="row"><Typography variant="h6" component="h2" gutterBottom> <MdEdit/> <MdDelete /> <MdAdd /> </Typography></TableCell>
+                  <TableCell component="th" scope="row"><Typography variant="h6" component="h2" gutterBottom> <MdEdit/> <MdDelete /> </Typography></TableCell>
                   <TableCell component="th" scope="row"><Typography variant="h6" component="h2" gutterBottom>{row._id}</Typography></TableCell>
                   <TableCell align="left"><Typography variant="h6" component="h2" gutterBottom>{row.name}</Typography></TableCell>
                   <TableCell align="left"><Typography variant="h6" component="h2" gutterBottom>€ {row.price}</Typography></TableCell>
@@ -91,19 +84,6 @@ async function handleSubmit(event: FormEvent) {
             </TableBody>
           </Table>
         </TableContainer>
-    </div>
-
-    <div>
-      <form className="container-form" onSubmit={handleSubmit}>
-      <Typography variant="h5" component="h2" gutterBottom>
-       Add new product
-      </Typography>
-        <TextField id="standard-basic" label="name" onChange={handleInputChange}/> <br />
-        <TextField id="standard-basic" label="price" onChange={handleInputChange} /> <br /> <br />
-        <Button variant="contained" color="primary" disableElevation type="submit">
-            Add <MdAdd />
-        </Button>
-      </form>
     </div>
    </>
   )

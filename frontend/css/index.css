@@ -40,3 +40,9 @@ h1, h2, h3, h4, h5, h6, strong, button {
 .form-title {
   padding-left: 20px;
 }
+
+.header-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
