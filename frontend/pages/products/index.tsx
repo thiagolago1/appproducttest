@@ -13,10 +13,13 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import { useAuth } from '../../hooks/auth';
 
 export default function Products() {
 
 const router = useRouter();
+
+const { signOut } = useAuth();
 
 const dispatch = useDispatch();
 const { posts } = useSelector(state => state.post);
@@ -37,6 +40,7 @@ useEffect(() => {
 },[])
 
 function handleSignOut() {
+  signOut();
   router.push('/');
 }
 

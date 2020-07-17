@@ -48,7 +48,7 @@ const AddNewProduct: React.FC = () => {
        Add new product
       </Typography>
         <TextField id="standard-basic" label="name" onChange={handleInputChange}/> <br />
-        <TextField id="standard-basic" label="price" onChange={handleInputChange} /> <br /> <br />
+        <TextField id="standard-basic" label="price" type="number" onChange={handleInputChange} /> <br /> <br />
         <Button variant="contained" color="primary" disableElevation type="submit">
             Add <MdAdd />
         </Button>
