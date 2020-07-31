@@ -5,6 +5,7 @@ import { createWrapper } from 'next-redux-wrapper';
 import store from '../store/store';
 import '../css/index.css';
 import { AuthProvider } from '../hooks/auth';
+import 'react-virtualized/styles.css';
 
 class MyApp extends App {
   render()  {
