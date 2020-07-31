@@ -16,6 +16,13 @@ export const productsReducer = (state = initialState, action) => {
         loading: false,
         error: null
       }
+    case types.ADD_PRODUCTS:
+      return {
+        ...state,
+        products: action.payload,
+        loading: false,
+        error: null
+      }
     default:
       return state
   }
