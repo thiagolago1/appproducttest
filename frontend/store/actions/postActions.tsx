@@ -6,7 +6,7 @@ export const fetchposts = () => async dispatch => {
     "http://localhost:3333/products"
   );
   dispatch({
-    type: types.GET_POSTS,
+    type: types.GET_PRODUCTS,
     payload: response.data,
   })
 }

@@ -1,18 +1,18 @@
 import * as types from '../types';
 
 const initialState={
-  posts: [],
+  products: [],
   post: {},
   loading: false,
   error: null
 }
 
-export const postReducer = (state = initialState, action) => {
+export const productsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.GET_POSTS:
+    case types.GET_PRODUCTS:
       return {
         ...state,
-        posts: action.payload,
+        products: action.payload,
         loading: false,
         error: null
       }

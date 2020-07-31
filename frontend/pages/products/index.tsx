@@ -22,7 +22,7 @@ const router = useRouter();
 const { signOut } = useAuth();
 
 const dispatch = useDispatch();
-const { posts } = useSelector(state => state.post);
+const { products } = useSelector(state => state.product);
 
 const useStyles = makeStyles({
   table: {
@@ -77,7 +77,7 @@ function handleAddNewProduct() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {posts.map((row) => (
+              {products.map((row) => (
                 <TableRow key={row._id}>
                   <TableCell component="th" scope="row"><Typography variant="h6" component="h2" gutterBottom> <MdEdit/> <MdDelete /> </Typography></TableCell>
                   <TableCell component="th" scope="row"><Typography variant="h6" component="h2" gutterBottom>{row._id}</Typography></TableCell>
